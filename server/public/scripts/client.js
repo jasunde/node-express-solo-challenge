@@ -8,14 +8,15 @@ $(document).ready(function () {
   function appendJokes(jokes) {
     var $jokeDiv = $('#jokes');
     $jokeDiv.empty();
-    
+
     jokes.forEach(function (joke) {
-      var $joke = $('<article class="joke"></article>');
+      var $joke = $('<div></div>').addClass('row');
       $joke.append('<h2>' + joke.whoseJoke + '</h2>');
       $joke.append('<p class="set-up">' + joke.jokeQuestion + '</p>');
       $joke.append('<p class="punch-line">' + joke.punchLine + '</p>')
 
       $jokeDiv.append($joke);
+      $joke.wrap('<article class="joke"></article>');
     });
   }
 
