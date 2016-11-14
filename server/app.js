@@ -1,3 +1,10 @@
+var express    = require('express')
+var app        = express()
+var bodyParser = require('body-parser')
+var path       = require('path')
+
+app.set('port', process.env.PORT || 3000)
+
 // initial jokes provided by the client
 var jokes = [
   {
@@ -16,3 +23,17 @@ var jokes = [
     punchLine: "If you pee on them they disappear."
   }
 ];
+
+app.get('/', function (req, res) {
+  res.sendFile( path.resolve( 'server/public/views/index.html') )
+}) // end serve index.html
+
+app.get('/jokes', function (req, res) {
+  res.send(jokes);
+}) // end get /jokes
+
+app.use(express.static('server/public'))
+
+app.listen(app.get('port'), function () {
+  console.log('Listening on port ' + app.get('port') + '...');
+})
