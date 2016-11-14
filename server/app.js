@@ -1,6 +1,7 @@
 var express    = require('express')
 var app        = express()
 var bodyParser = require('body-parser')
+var urlEncoded = bodyParser.urlencoded({extended: false})
 var path       = require('path')
 
 app.set('port', process.env.PORT || 3000)
@@ -31,6 +32,16 @@ app.get('/', function (req, res) {
 app.get('/jokes', function (req, res) {
   res.send(jokes);
 }) // end get /jokes
+
+app.post('/jokes', urlEncoded, function (req, res) {
+  jokes.push({
+    whoseJoke: req.body.name,
+    jokeQuestion: req.body.setUp,
+    punchLine: req.body.punchLine
+  })
+
+  res.sendStatus(201)
+})
 
 app.use(express.static('server/public'))
 

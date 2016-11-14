@@ -5,8 +5,8 @@
 - [x] server: Respond to requests for static files
 - [x] client: Send ajax GET request for jokes data
 - [x] client: Display response on the DOM
-- [ ] client: Send new joke to server
-- [ ] server: Add new joke
+- [x] client: Send new joke to server
+- [x] server: Add new joke
 - [ ] Demonstrate the separation of logic between the client and the server.
 
 ### The Joke Book

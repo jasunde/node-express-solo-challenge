@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+  // jokeInput form submit handler
+  $('#jokeInput').on('submit', sendJoke);
+
   getJokes();
 
   function appendJokes(jokes) {
@@ -11,6 +14,26 @@ $(document).ready(function () {
       $joke.append('<p class="punch-line">' + joke.punchLine + '</p>')
 
       $jokeDiv.append($joke);
+    });
+  }
+
+  function sendJoke(event) {
+    event.preventDefault();
+    var jokeInput = {};
+    $.each($(this).serializeArray(), function (i, obj) {
+      jokeInput[obj.name] = obj.value;
+    });
+
+    $.ajax({
+      type: 'POST',
+      url: '/jokes',
+      data: jokeInput,
+      success: function (res) {
+        console.log(res);
+      },
+      error: function (err) {
+        console.log(err);
+      }
     });
   }
 
