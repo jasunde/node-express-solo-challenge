@@ -7,6 +7,8 @@ $(document).ready(function () {
 
   function appendJokes(jokes) {
     var $jokeDiv = $('#jokes');
+    $jokeDiv.empty();
+    
     jokes.forEach(function (joke) {
       var $joke = $('<article class="joke"></article>');
       $joke.append('<h2>' + joke.whoseJoke + '</h2>');
@@ -29,7 +31,7 @@ $(document).ready(function () {
       url: '/jokes',
       data: jokeInput,
       success: function (res) {
-        console.log(res);
+        getJokes();
       },
       error: function (err) {
         console.log(err);

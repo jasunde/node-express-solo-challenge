@@ -7,7 +7,7 @@
 - [x] client: Display response on the DOM
 - [x] client: Send new joke to server
 - [x] server: Add new joke
-- [ ] Demonstrate the separation of logic between the client and the server.
+- [x] Demonstrate the separation of logic between the client and the server.
 
 ### The Joke Book
 
